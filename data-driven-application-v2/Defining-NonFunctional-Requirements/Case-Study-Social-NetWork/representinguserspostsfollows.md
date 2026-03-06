@@ -11,13 +11,12 @@ The primary read operation is the home page, which displays recent posts from pe
 ### Query
 
 ```sql
-SELECT posts.*, users.*
-FROM posts
+SELECT posts.*, users.* FROM posts
   JOIN follows ON posts.sender_id = follows.followee_id
   JOIN users   ON posts.sender_id = users.id
-WHERE follows.follower_id = current_user
-ORDER BY posts.timestamp DESC
-LIMIT 1000
+  WHERE follows.follower_id = current_user
+  ORDER BY posts.timestamp DESC
+  LIMIT 1000
 ```
 
 ### How it works
